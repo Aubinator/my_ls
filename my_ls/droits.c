@@ -1,0 +1,20 @@
+#include <stdlib.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include "lib.h"
+
+void    droit(int mode)
+{
+  char droit[10];
+  droit[0] = mode&S_IRUSR? 'r':'-';
+  droit[1] = mode&S_IWUSR? 'w':'-';
+  droit[2] = mode&S_IXUSR? 'x':'-';
+  droit[3] = mode&S_IRGRP? 'r':'-';
+  droit[4] = mode&S_IRGRP? 'w':'-';
+  droit[5] = mode&S_IXGRP? 'x':'-';
+  droit[6] = mode&S_IROTH? 'r':'-';
+  droit[7] = mode&S_IWOTH? 'w':'-';
+  droit[8] = mode&S_IXOTH? 'x':'-';
+  droit[9] = '\0';
+  my_putstr(droit);
+}
